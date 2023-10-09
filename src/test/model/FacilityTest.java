@@ -7,24 +7,20 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class FacilityTest {
     private Facility testFacility1;
-    private Facility testFacility2;
-    private Region testRegion;
     private EmployeeType testEmployeeType1;
     private EmployeeType testEmployeeType2;
     private EmployeeType testEmployeeType3;
     @BeforeEach
     void setUp(){
-        testRegion = new Region("Vancouver");
         testFacility1 = new Facility("Facility1", 1000, 40000
                 , 2500);
-        testFacility2 = new Facility("Facility2", 9990, 100000,45000);
         testEmployeeType1 = new EmployeeType( "Manager", 10000, 1);
         testEmployeeType2 = new EmployeeType( "Assistant Manager", 9000, 2);
         testEmployeeType3 = new EmployeeType("Worker", 4000, 10);
 
     }
 
-    //TODO
+
     @Test
     void testFacilityConstructor(){
         assertEquals(1000, testFacility1.getRevenue());
@@ -33,7 +29,7 @@ public class FacilityTest {
         assertEquals(0, testFacility1.getEmployeeTypes().size());
     }
 
-    //TODO
+
     @Test
     void addEmployeeTypeSameTest(){
         assertTrue(this.testFacility1.addEmployeeType( "Manager", 10000, 1));
@@ -42,7 +38,7 @@ public class FacilityTest {
         assertEquals(1, this.testFacility1.countEmployeeTypes());
     }
 
-    //TODO
+
     @Test
     void addEmployeeTypeDifferentTest(){
         assertTrue(this.testFacility1.addEmployeeType( "Manager", 10000, 1));
@@ -60,7 +56,7 @@ public class FacilityTest {
         assertFalse(this.testFacility1.removeEmployeeType("Manager"));
     }
 
-    //TODO
+
     @Test
     void calculateSalaryToEmployeeTypeTest(){
         this.testFacility1.addEmployeeType("Manager", 100000, 1);

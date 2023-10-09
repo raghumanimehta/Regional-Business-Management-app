@@ -41,8 +41,8 @@ public class Region {
     // If Facility not in the region does nothing and return false.
     public boolean removeFacility(String title) {
         int index = 0;
-        for (int i = 0; i < this.facilities.size(); i++){
-            if (this.facilities.get(i).getName().equals(title)){
+        for (int i = 0; i < this.facilities.size(); i++) {
+            if (this.facilities.get(i).getName().equals(title)) {
                 this.facilities.remove(i);
                 return true;
             }
@@ -101,6 +101,7 @@ public class Region {
     public boolean isProfitable() {
         return (calculateTotalRevenueRegion() > calculateTotalExpenses());
     }
+
     public String getName() {
         return name;
     }
