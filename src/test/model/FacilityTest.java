@@ -7,17 +7,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class FacilityTest {
     private Facility testFacility1;
-    private EmployeeType testEmployeeType1;
-    private EmployeeType testEmployeeType2;
-    private EmployeeType testEmployeeType3;
     @BeforeEach
     void setUp(){
         testFacility1 = new Facility("Facility1", 1000, 40000
                 , 2500);
-        testEmployeeType1 = new EmployeeType( "Manager", 10000, 1);
-        testEmployeeType2 = new EmployeeType( "Assistant Manager", 9000, 2);
-        testEmployeeType3 = new EmployeeType("Worker", 4000, 10);
-
     }
 
 
@@ -85,6 +78,28 @@ public class FacilityTest {
         this.testFacility1.addEmployeeType("Helper", 100, 5);
         this.testFacility1.addEmployeeType("Helper", 100, 5);
         assertEquals(2, this.testFacility1.countEmployeeTypes());
+    }
+
+    @Test
+    void increaseExpensesTest(){
+        testFacility1.increaseExpensesOtherThanSalaries(100);
+        assertEquals(2600, testFacility1.getExpensesOtherThanSalaries());
+    }
+    @Test
+    void DecreaseExpensesTest(){
+        testFacility1.decreaseExpensesOtherThanSalaries(100);
+        assertEquals(2400, testFacility1.getExpensesOtherThanSalaries());
+    }
+    @Test
+    void decreaseResourcesTest(){
+        testFacility1.decreaseResources(100);
+        assertEquals(39900, testFacility1.getResources());
+    }
+
+    @Test
+    void increaseResourcesTest(){
+        testFacility1.increaseResources(100);
+        assertEquals(40100, testFacility1.getResources());
     }
 
 }

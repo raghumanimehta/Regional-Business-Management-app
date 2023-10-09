@@ -37,13 +37,16 @@ class RegionTest {
     void addFacilityMultipleTest() {
         assertTrue(testRegion.addFacility("Facility1", 1000, 40000
                 , 2500));
-        assertTrue(testRegion.addFacility("Facility2", 9990, 100000, 45000));
-        assertTrue(testRegion.addFacility("Facility3", 500000, 350000, 35000));
+        assertTrue(testRegion.addFacility("Facility2", 9990, 100000,
+                45000));
+        assertTrue(testRegion.addFacility("Facility3", 500000, 350000,
+                35000));
         assertEquals(3, testRegion.getFacilities().size());
         assertEquals("Facility1", testRegion.getFacilities().get(0).getName());
         assertEquals("Facility2", testRegion.getFacilities().get(1).getName());
         assertEquals("Facility3", testRegion.getFacilities().get(2).getName());
-        assertFalse(testRegion.addFacility("Facility2", 9990, 100000, 45000));
+        assertFalse(testRegion.addFacility("Facility2", 9990, 100000,
+                45000));
         assertEquals(3, testRegion.getFacilities().size());
     }
 
@@ -170,6 +173,11 @@ class RegionTest {
         testRegion.addFacility("Facility2", 9990, 100000, 45000);
         testRegion.addFacility("Facility3", 500000, 350000, 35000);
         assertTrue(testRegion.isProfitable());
+    }
+
+    @Test
+    void getName(){
+        assertEquals("Vancouver",testRegion.getName());
     }
 
 

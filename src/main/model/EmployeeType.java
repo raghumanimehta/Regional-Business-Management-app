@@ -2,7 +2,6 @@ package model;
 
 public class EmployeeType {
     private String title;
-    private int id;
     private int salary;
     private int count;
 
@@ -17,10 +16,6 @@ public class EmployeeType {
         return title;
     }
 
-    public int getId() {
-        return id;
-    }
-
     public int getSalary() {
         return salary;
     }
@@ -30,6 +25,6 @@ public class EmployeeType {
     }
 
     public int getTotalMoneyToBePaid() {
-        return this.salary * this.count;
+        return getSalary() * getCount();
     }
 }
