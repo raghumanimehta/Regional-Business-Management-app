@@ -151,6 +151,14 @@ class RegionTest {
         assertEquals(40000 , testFacility1.getResources());
         assertEquals( 350000, testFacility3.getResources());
     }
+    @Test
+    void transferMoneyPossible2() {
+        testRegion.addFacility("Facility1", 1000, 40000
+                , 2500);
+        testRegion.addFacility("Facility2", 500000, 350000, 35000);
+        assertFalse(testRegion.transferResources("Facility1", "Facility3", 1000));
+    }
+
 
     @Test
     void transferMoneyPossible() {
