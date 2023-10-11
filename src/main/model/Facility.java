@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
- * Represents a facility. A facility has a name, revenues, expenses, resources, and a list of EmployeeTypes.
+ * Represents a facility. A facility has a name, revenue, expenses, resources, and a list of EmployeeTypes.
  *
- * Each EmployeeType in the facility list represents a type of employee with specific attributes like title, salary,
- * and count. The employee type can be identified uniquely by its title within the facility. There can't be more than
- * one employee type in the list of employee type with the same type.
+ * Each EmployeeType in the facility list represents a type of employee with specific attributes like title,
+ * salary (in cents),and count. The employee type can be identified uniquely by its title within the facility.
+ * There can't be more than one employee type in the list of employee type with the same type.
  * Revenue, all types of expenses, and resources are stored in cents.
  *
  * INVARIANT: Every title in EmployeeType within the facility is unique.
@@ -52,7 +52,7 @@ public class Facility {
     // Effects: removes the employee type with the title from the list of employee types and returns true.
     // If employee type not already in th list does nothing and returns false
     public boolean removeEmployeeType(String title) {
-        int index = 0;
+        
         for (int i = 0; i < this.employeeTypes.size(); i++) {
             if (this.employeeTypes.get(i).getTitle().equals(title)) {
                 this.employeeTypes.remove(i);
@@ -63,8 +63,8 @@ public class Facility {
     }
 
 
-    // Effects: Returns the total money that is needed to be paid to all the employees of a particular employee type
-    //          based on its title. If the employee type with the given title doesn't exist, returns -1.
+    // Effects: Returns the total money (in cents) that is needed to be paid to all the employees of a particular
+    //          employee type based on its title. If the employee type with the given title doesn't exist, returns -1.
     public int calculateSalaryToEmployeeType(String title) {
         for (EmployeeType employeeType : this.employeeTypes) {
             if (employeeType.getTitle().equals(title)) {
@@ -78,7 +78,7 @@ public class Facility {
 
 
     // Effects: Returns the total amount (in cents) of money that is needed to be paid to all the employees in all the
-    // employee types
+    //          employee types
     public int calculateTotalMoneyToBePaidToEmployees() {
         int totalMoneyToBePaid = 0;
         for (EmployeeType e : this.employeeTypes) {

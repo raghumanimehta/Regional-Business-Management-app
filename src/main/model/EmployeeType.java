@@ -1,12 +1,18 @@
 package model;
 
+/*
+ * Represents an employee type. An employee type has a title, salary (in cents) to be paid to each employee, count of
+ * the employees in that employee type.
+ */
+
 public class EmployeeType {
     private String title;
     private int salary;
     private int count;
 
+    //
     public EmployeeType(String title, int salary, int count) {
-       // this.id = IdGenerator.generateId();
+
         this.title = title;
         this.salary = salary;
         this.count = count;

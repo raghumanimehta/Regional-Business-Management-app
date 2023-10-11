@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class RegionTest {
     private Region testRegion;
     private Facility testFacility1;
-    private Facility testFacility2;
     private Facility testFacility3;
 
     @BeforeEach
@@ -16,7 +15,6 @@ class RegionTest {
         testRegion = new Region("Vancouver");
         testFacility1 = new Facility("Facility1", 1000, 40000
                 , 2500);
-        testFacility2 = new Facility("Facility2", 9990, 100000, 45000);
         testFacility3 = new Facility("Facility3", 500000, 350000, 35000);
     }
 
@@ -145,14 +143,23 @@ class RegionTest {
                 , 2500);
         testRegion.addFacility("Facility2", 9990, 100000, 45000);
         testRegion.addFacility("Facility3", 500000, 350000, 35000);
-        assertFalse(testRegion.transferResources(testFacility1, testFacility2, 1000000000));
+        assertFalse(testRegion.transferResources("Facility1", "Facility2", 40001));
+    }
+    @Test
+    void transferMoneyFacilityNotFound() {
+        assertFalse(testRegion.transferResources("Facility1", "Facility2", 1000));
+        assertEquals(40000 , testFacility1.getResources());
+        assertEquals( 350000, testFacility3.getResources());
     }
 
     @Test
     void transferMoneyPossible() {
-        assertTrue(testRegion.transferResources(testFacility1, testFacility3, 1000));
-        assertEquals(40000 - 1000, testFacility1.getResources());
-        assertEquals(1000 + 350000, testFacility3.getResources());
+        testRegion.addFacility("Facility1", 1000, 40000
+                , 2500);
+        testRegion.addFacility("Facility3", 500000, 350000, 35000);
+        assertTrue(testRegion.transferResources("Facility1", "Facility3", 1000));
+        assertEquals(40000 - 1000, testRegion.getFacilities().get(0).getResources());
+        assertEquals(1000 + 350000,  testRegion.getFacilities().get(1).getResources());
     }
 
     @Test

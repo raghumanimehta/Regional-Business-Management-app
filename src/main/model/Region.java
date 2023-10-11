@@ -8,7 +8,6 @@ import java.util.List;
  * for the region. There cannot be duplicates in the list of facilities, that is, each facility can only be present in
  * the list once. The facilities are stored in the order of which they were added. Expenses, Revenues, and Resources
  * are all stored as cents.
- *
  */
 public class Region {
 
@@ -40,7 +39,7 @@ public class Region {
     // Effects: Removes the facility from the region and returns true.
     // If Facility not in the region does nothing and return false.
     public boolean removeFacility(String title) {
-        int index = 0;
+
         for (int i = 0; i < this.facilities.size(); i++) {
             if (this.facilities.get(i).getName().equals(title)) {
                 this.facilities.remove(i);
@@ -56,17 +55,37 @@ public class Region {
     }
 
     // Requires: amount > 0 (in cents).
-    //Modifies: this, start, destination.
+    //Modifies: this, Facility
     // Effects: If the start facility has resources (in cents) greater than or equal to the given
-    // amount(in cents), deducts that amount (in cents) from the start facility and adds it to the destination facility.
-    public boolean transferResources(Facility start, Facility destination, int amount) {
-        if (start.getResources() - amount >= 0) {
-            start.decreaseResources(amount);
-            destination.increaseResources(amount);
-            return true;
-        } else {
+    // amount(in cents), deducts that amount (in cents) from the start facility and adds it to the destination facility
+    // and returns true. If the start facility ends up with < 0 resources, returns false. If one or both facilities not
+    // found then returns false and does nothing.
+    public boolean transferResources(String start, String destination, int amount) {
+        Facility startFacility = findFacility(start);
+        Facility destinationFacility = findFacility(destination);
+
+        if (startFacility == null || destinationFacility == null) {
             return false;
+        } else {
+            if (startFacility.getResources() - amount >= 0) {
+                startFacility.decreaseResources(amount);
+                destinationFacility.increaseResources(amount);
+                return true;
+            } else {
+                return false;
+            }
         }
+    }
+
+
+
+    public Facility findFacility(String name) {
+        for (Facility f : this.facilities) {
+            if (f.getName().equals(name)) {
+                return f;
+            }
+        }
+        return null;
     }
 
     // Effects: Returns the total expense (in cents) incurred in the region.
