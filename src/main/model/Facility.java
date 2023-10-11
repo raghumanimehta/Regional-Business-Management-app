@@ -52,7 +52,7 @@ public class Facility {
     // Effects: removes the employee type with the title from the list of employee types and returns true.
     // If employee type not already in th list does nothing and returns false
     public boolean removeEmployeeType(String title) {
-        
+
         for (int i = 0; i < this.employeeTypes.size(); i++) {
             if (this.employeeTypes.get(i).getTitle().equals(title)) {
                 this.employeeTypes.remove(i);
