@@ -78,6 +78,7 @@ public class ManagementApp {
                 break;
             case "p":
                 isProfitable();
+                break;
             default:
                 System.out.println("Invalid input, try again!");
         }

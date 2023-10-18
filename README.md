@@ -22,3 +22,6 @@
 - As a user, I'd want to be able to view all the stores/outlets/offices and manage them, for example, increasing the 
   number of employees to a particular store in a particular region . 
 - As a user, I'd want to be able to transfer resources or stock of various products from one store/outlet to another.
+- As a user, I'd like to be able to save the information of the facilities. I'd also like to be reminded of saving 
+  when I quit the application.
+- As a user, I'd like to be able to load the information I stored earlier.
