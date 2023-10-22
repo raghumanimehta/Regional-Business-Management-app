@@ -1,17 +1,26 @@
 package ui;
 
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 import model.*;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
 // Management App
 public class ManagementApp {
     private Scanner scanner;
     private Region region;
+    private static final String FILE_STORE = "./data/managementApp.json";
+    private JsonWriter writer;
+    private JsonReader reader;
 
-    public ManagementApp(String name) {
+    public ManagementApp(String name) throws FileNotFoundException {
         this.region = new Region(name);
+        this.writer = new JsonWriter(FILE_STORE);
+        this.reader = new JsonReader(FILE_STORE);
         runApp();
     }
 
@@ -40,7 +49,7 @@ public class ManagementApp {
     @SuppressWarnings("methodlength")
     public void processInput(String input) {
         switch (input) {
-            case "l":
+            case "la":
                 listFacilities();
                 break;
             case "a":
@@ -78,6 +87,12 @@ public class ManagementApp {
                 break;
             case "p":
                 isProfitable();
+                break;
+            case "s" :
+                saveApp();
+                break;
+            case "l" :
+                loadApp();
                 break;
             default:
                 System.out.println("Invalid input, try again!");
@@ -283,7 +298,7 @@ public class ManagementApp {
     public void displayMenu() {
         System.out.println("Regional Facility Management App");
         System.out.println("Select from:");
-        System.out.println("\tl    -> List all Facilities");
+        System.out.println("\tla   -> List all Facilities");
         System.out.println("\ta    -> Add Facility to the Region");
         System.out.println("\tr    -> Remove Facility from the Region");
         System.out.println("\tcr   -> Calculate Total Revenue earned from the Region");
@@ -295,6 +310,30 @@ public class ManagementApp {
         System.out.println("\tsx   -> Show expenses for a facility");
         System.out.println("\tsrev -> Show revenue for a facility");
         System.out.println("\tp    -> Check if the region is profitable");
+        System.out.println("\ts    -> Save progress for the application");
+        System.out.println("\tl    -> Load data");
         System.out.println("\tq    -> Quit Application");
+    }
+
+    // Modifies: this
+    // Effects: saves the data of the app to file
+    private void saveApp() {
+        try {
+            writer.openWriter();
+            writer.write(region);
+            writer.closeWriter();
+            System.out.println("Region " + region.getName() + "saved successfully to " + FILE_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to store file to " + FILE_STORE + "!");
+        }
+    }
+
+    private void loadApp() {
+        try {
+            region = reader.loadRegion();
+            System.out.println("Region loaded successfully!");
+        } catch (IOException e) {
+            System.out.println("Unable to load file!");
+        }
     }
 }

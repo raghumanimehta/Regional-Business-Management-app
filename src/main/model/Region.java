@@ -1,7 +1,12 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.*;
+
 import java.util.ArrayList;
 import java.util.List;
+import persistence.*;
 
 /*
  * Represents a region. A region has a name, a list of facilities in the region and expenses allotted by the business
@@ -78,7 +83,7 @@ public class Region {
     }
 
 
-
+    // Effects: checks if the facility is in the list
     public Facility findFacility(String name) {
         for (Facility f : this.facilities) {
             if (f.getName().equals(name)) {
@@ -119,6 +124,25 @@ public class Region {
     // Effects : Returns true if the region is profitable (revenue > total expenses)
     public boolean isProfitable() {
         return (calculateTotalRevenueRegion() > calculateTotalExpenses());
+    }
+
+
+    // Effects: returns this as a JSON object. Inspired from the code given in JsonSerializationDemo
+    public JSONObject toJson() {
+        JSONObject myObject = new JSONObject();
+        myObject.put("name", this.name);
+        myObject.put("facilities", facilitiesToJson());
+        return myObject;
+    }
+
+    //Effects: returns facilities in the region as a JSON array. Inspired from the code given in JsonSerializationDemo
+    public JSONArray facilitiesToJson() {
+        JSONArray myArray = new JSONArray();
+
+        for (Facility nextFacility : this.facilities) {
+            myArray.put(nextFacility.toJson());
+        }
+        return myArray;
     }
 
     public String getName() {

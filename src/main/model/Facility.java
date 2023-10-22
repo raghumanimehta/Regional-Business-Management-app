@@ -1,5 +1,10 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.w3c.dom.ls.LSOutput;
+import persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,8 +35,8 @@ public class Facility {
         this.resources = resources;
         this.expensesOtherThanSalaries = expensesOtherThanSalaries;
         this.employeeTypes = new ArrayList<>();
-    }
 
+    }
 
     // Requires: count > 0
     // Modifies: this
@@ -114,6 +119,29 @@ public class Facility {
     public void decreaseExpensesOtherThanSalaries(int amount) {
         this.expensesOtherThanSalaries -= amount;
     }
+
+
+    // Effects: returns this as a JSON object. Inspired from the code given in JsonSerializationDemo
+    public JSONObject toJson() {
+        JSONObject myObject = new JSONObject();
+        myObject.put("name", this.name);
+        myObject.put("revenue", this.revenue);
+        myObject.put("expensesOtherThanSalaries", this.expensesOtherThanSalaries);
+        myObject.put("employees", employeeTypesToJson());
+        myObject.put("resources", this.resources);
+        return myObject;
+    }
+
+    // TODO
+    public JSONArray employeeTypesToJson() {
+        JSONArray myArray = new JSONArray();
+
+        for (EmployeeType employeeType : this.employeeTypes) {
+            myArray.put(employeeType.toJson());
+        }
+        return myArray;
+    }
+
 
     public List<EmployeeType> getEmployeeTypes() {
         return employeeTypes;
