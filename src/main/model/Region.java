@@ -2,11 +2,11 @@ package model;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.json.*;
+
 
 import java.util.ArrayList;
 import java.util.List;
-import persistence.*;
+
 
 /*
  * Represents a region. A region has a name, a list of facilities in the region and expenses allotted by the business

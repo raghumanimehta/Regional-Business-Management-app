@@ -1,0 +1,45 @@
+{
+     "name": "Vancouver",
+     "facilities": [
+          {
+               "revenue": 1000,
+               "name": "F1",
+               "resources": 1000,
+               "employees": [
+                    {
+                         "count": 1,
+                         "title": "Manager",
+                         "salary": 2000
+                    },
+                    {
+                         "count": 10,
+                         "title": "Helper",
+                         "salary": 100
+                    }
+               ],
+               "expensesOtherThanSalaries": 1000
+          },
+          {
+               "revenue": 10000,
+               "name": "F2",
+               "resources": 3000,
+               "employees": [{
+                    "count": 1,
+                    "title": "Manager",
+                    "salary": 300
+               }],
+               "expensesOtherThanSalaries": 2000
+          },
+          {
+               "revenue": 30450,
+               "name": "F3",
+               "resources": 4000,
+               "employees": [{
+                    "count": 3,
+                    "title": "YouTuber",
+                    "salary": 10000
+               }],
+               "expensesOtherThanSalaries": 6000
+          }
+     ]
+}

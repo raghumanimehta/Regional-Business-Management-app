@@ -1,0 +1,64 @@
+{
+  "name": "Vancouver",
+  "facilities": [
+    {
+      "revenue": 1000,
+      "name": "F1",
+      "resources": 2000,
+      "employees": [
+        {
+          "count": 1,
+          "title": "Manager",
+          "salary": 100
+        },
+        {
+          "count": 3,
+          "title": "Receptionist",
+          "salary": 45
+        }
+      ],
+      "expensesOtherThanSalaries": 3000
+    },
+    {
+      "revenue": 5000,
+      "name": "F2",
+      "resources": 3000,
+      "employees": [
+        {
+          "count": 1,
+          "title": "Manager",
+          "salary": 1000
+        },
+        {
+          "count": 3,
+          "title": "Receptionist",
+          "salary": 200
+        },
+        {
+          "count": 3,
+          "title": "Cleaner",
+          "salary": 100
+        }
+      ],
+      "expensesOtherThanSalaries": 1100
+    },
+    {
+      "revenue": 1230,
+      "name": "F3",
+      "resources": 4580,
+      "employees": [
+        {
+          "count": 1,
+          "title": "CEO",
+          "salary": 100000
+        },
+        {
+          "count": 2,
+          "title": "Personal Assistant",
+          "salary": 1000
+        }
+      ],
+      "expensesOtherThanSalaries": 9820
+    }
+  ]
+}

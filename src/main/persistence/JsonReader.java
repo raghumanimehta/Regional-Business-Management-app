@@ -8,14 +8,10 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.List;
-import java.util.stream.Stream;
 
 // Represents a reader that reads the management data from JSON from the file
 // NOTE : The following code has parts used from the JsonSerializationDemo provided in the course.
+//        The structure follows the above-mentioned source but has been adapted to suit my project.
 public class JsonReader {
 
     private String source;
@@ -52,17 +48,6 @@ public class JsonReader {
         return newRead;
     }
 
-//    // Effects: Reads the Facility data from the file
-//    // throws IOException if an error occurs in reading data
-//    public Facility loadFacility() throws  IOException {
-//
-//    }
-//
-//    // Effects: Reads the EmployeeType data from the file
-//    // throws IOException if an error occurs in reading data
-//    public EmployeeType loadEmployeeType() throws IOException {
-//
-//    }
 
     // Effects: parses Region from JSON object and returns it
     private Region parseRegion(JSONObject jsonObject) {
@@ -72,20 +57,19 @@ public class JsonReader {
         return loadedRegion;
     }
 
-    // Effects: parses Region from JSON object and returns it
+    // Effects: parses Facility from JSON object and returns it
     private Facility parseFacility(JSONObject jsonObject) {
         String facilityName = jsonObject.getString("name");
         int revenue = jsonObject.getInt("revenue");
         int expensesOtherThanSalaries = jsonObject.getInt("expensesOtherThanSalaries");
         int resources = jsonObject.getInt("resources");
 
-
-
         Facility loadedFacility = new Facility(facilityName, revenue, resources, expensesOtherThanSalaries);
-//        addEmployeeTypes(loadedFacility, jsonObject);
         return loadedFacility;
     }
 
+
+    // Effects: Parses employeeType from Json and returns it
     private EmployeeType parseEmployeeType(JSONObject jsonObject) {
         String title = jsonObject.getString("title");
         int salary = jsonObject.getInt("salary");

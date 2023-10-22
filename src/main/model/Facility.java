@@ -2,8 +2,7 @@ package model;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.w3c.dom.ls.LSOutput;
-import persistence.*;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -132,7 +131,7 @@ public class Facility {
         return myObject;
     }
 
-    // TODO
+    // Effects: returns this as an JSON array. Inspired from the code given in JsonSerializationDemo
     public JSONArray employeeTypesToJson() {
         JSONArray myArray = new JSONArray();
 

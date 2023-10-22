@@ -328,6 +328,8 @@ public class ManagementApp {
         }
     }
 
+    // Modifies: this
+    // Effects: loads the data of the app from the file
     private void loadApp() {
         try {
             region = reader.loadRegion();

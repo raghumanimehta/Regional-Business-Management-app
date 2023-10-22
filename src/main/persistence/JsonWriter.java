@@ -2,14 +2,15 @@ package persistence;
 
 import model.*;
 import org.json.JSONObject;
-import java.io.BufferedReader;
+
 
 
 
 import java.io.*;
 
 // Represents a writer that writes JSON representation of the app to file
-// NOTE: This class uses code taken from the JsonSerializationDemo provided in the course
+// NOTE: This class uses code taken from the JsonSerializationDemo provided in the course. The structure is
+//       to the said demo but has been adapted to suit my project.
 public class JsonWriter {
     private PrintWriter writer;
     private String destination;
