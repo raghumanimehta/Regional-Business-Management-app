@@ -93,6 +93,7 @@ public class Region {
         return null;
     }
 
+
     // Effects: Returns the total expense (in cents) incurred in the region.
     public int calculateTotalExpenses() {
         int totalExpenses = 0;

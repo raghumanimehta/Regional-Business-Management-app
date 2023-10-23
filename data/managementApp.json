@@ -1,0 +1,46 @@
+{
+     "name": "Vancouver",
+     "facilities": [
+          {
+               "revenue": 88585,
+               "name": "F1",
+               "resources": 42603,
+               "employees": [
+                    {
+                         "count": 1,
+                         "title": "manager",
+                         "salary": 48858
+                    },
+                    {
+                         "count": 2,
+                         "title": "helper",
+                         "salary": 48747
+                    },
+                    {
+                         "count": 29399,
+                         "title": "assistant",
+                         "salary": 29383
+                    }
+               ],
+               "expensesOtherThanSalaries": 48848
+          },
+          {
+               "revenue": 948848,
+               "name": "F2",
+               "resources": 290769,
+               "employees": [],
+               "expensesOtherThanSalaries": 229394
+          },
+          {
+               "revenue": 49939,
+               "name": "F3",
+               "resources": 48858,
+               "employees": [{
+                    "count": 2,
+                    "title": "manager",
+                    "salary": 48388
+               }],
+               "expensesOtherThanSalaries": 29939
+          }
+     ]
+}

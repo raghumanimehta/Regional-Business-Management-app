@@ -85,17 +85,36 @@ public class ManagementApp {
             case "srev":
                 showRevenue();
                 break;
+            case "le":
+                listEmployees();
+                break;
             case "p":
                 isProfitable();
                 break;
-            case "s" :
+            case "s":
                 saveApp();
                 break;
-            case "l" :
+            case "l":
                 loadApp();
                 break;
             default:
                 System.out.println("Invalid input, try again!");
+        }
+    }
+
+    // Effects: returns the list of employee types in a facility in the region
+    private void listEmployees() {
+        System.out.println("Enter the name of the facility to list employee type of: ");
+        String name = scanner.nextLine();
+        Facility facility = this.region.findFacility(name);
+        if (facility == null) {
+            System.out.println("Facility not found. Can't show list of employee type!");
+        } else if (facility.getEmployeeTypes().isEmpty()) {
+            System.out.println("Facility has no employee types");
+        } else {
+            for (EmployeeType e : facility.getEmployeeTypes()) {
+                System.out.println(e.getTitle());
+            }
         }
     }
 
@@ -309,6 +328,7 @@ public class ManagementApp {
         System.out.println("\tsr   -> Show resources for a facility");
         System.out.println("\tsx   -> Show expenses for a facility");
         System.out.println("\tsrev -> Show revenue for a facility");
+        System.out.println("\tle   -> List employee types for a facility");
         System.out.println("\tp    -> Check if the region is profitable");
         System.out.println("\ts    -> Save progress for the application");
         System.out.println("\tl    -> Load data");
@@ -322,7 +342,7 @@ public class ManagementApp {
             writer.openWriter();
             writer.write(region);
             writer.closeWriter();
-            System.out.println("Region " + region.getName() + "saved successfully to " + FILE_STORE);
+            System.out.println("Region " + region.getName() + " saved successfully to " + FILE_STORE);
         } catch (IOException e) {
             System.out.println("Unable to store file to " + FILE_STORE + "!");
         }
