@@ -6,6 +6,7 @@ import org.json.JSONObject;
 
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -32,20 +33,18 @@ public class JsonReader {
     // Effects: reads source file as a string and returns it throws IOException if not found
     // Note: Inspired from https://www.youtube.com/watch?v=ScUJx4aWRi0
     private String readFile(String source) throws IOException {
-        String newRead = null;
-        try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(source));
-            newRead = "";
+        StringBuilder newRead = null;
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(source))) {
+            newRead = new StringBuilder();
             String newLine;
             while ((newLine = bufferedReader.readLine()) != null) {
-                newRead = newRead + newLine;
+                newRead.append(newLine);
             }
         } catch (IOException e) {
             System.out.println("File not found!");
-            e.printStackTrace();
         }
 
-        return newRead;
+        return newRead.toString();
     }
 
 
