@@ -22,6 +22,20 @@
 - As a user, I'd want to be able to view all the stores/outlets/offices and manage them, for example, increasing the 
   number of employees to a particular store in a particular region . 
 - As a user, I'd want to be able to transfer resources or stock of various products from one store/outlet to another.
-- As a user, I'd like to be able to save the information of the facilities. I'd also like to be reminded of saving 
-  when I quit the application.
+- As a user, I'd like to be able to save the information of the facilities.
 - As a user, I'd like to be able to load the information I stored earlier.
+- credit for the icon : 
+<a href="https://www.flaticon.com/free-icons/budget" title="budget icons">Budget icons created by Freepik - Flaticon</a>
+
+
+# Instructions for Grader
+
+- You can add facilities to the region by bringing the mouse pointer to the "Add Facility" button on the left hand side
+of the frame and clicking it. You'll be asked to enter a few particulars about the facility you want to add. 
+- You can remove facilities from the region by bringing the mouse pointer to the "Remove Facility" button on the right 
+hand side of the frame and clicking it. You'll be asked to enter the name of the facility you want to remove. 
+- You can filter the facilities such that only profitable facilities are shown on the panel on the left. This can be 
+done by clicking the "Show Profitable Facilities" button. You can click it again to show all the facilities.
+- You can transfer resources from one facility to another by pressing the "Transfer Resources" button in the left panel.
+- You can save the state of my application by clicking the "Save" button in the right panel.
+- You can reload the last state of my application by clicking the "Load" button in the right panel.

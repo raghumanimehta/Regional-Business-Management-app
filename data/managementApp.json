@@ -2,33 +2,53 @@
      "name": "Vancouver",
      "facilities": [
           {
-               "revenue": 28488,
+               "revenue": 2000,
                "name": "F1",
-               "resources": 23883,
-               "employees": [{
-                    "count": 28323,
-                    "title": "manager",
-                    "salary": 23848
-               }],
-               "expensesOtherThanSalaries": 29393
+               "resources": 2001,
+               "employees": [
+                    {
+                         "count": 1,
+                         "title": "Manager",
+                         "salary": 2000
+                    },
+                    {
+                         "count": 2,
+                         "title": "Manager2",
+                         "salary": 2000
+                    },
+                    {
+                         "count": 3,
+                         "title": "Manager3",
+                         "salary": 2000
+                    },
+                    {
+                         "count": 2,
+                         "title": "Manager4",
+                         "salary": 1000
+                    }
+               ],
+               "expensesOtherThanSalaries": 1000
           },
           {
-               "revenue": 848739,
+               "revenue": 30003,
                "name": "F2",
-               "resources": 238832,
-               "employees": [{
-                    "count": 3823,
-                    "title": "manager",
-                    "salary": 28842
-               }],
-               "expensesOtherThanSalaries": 83212
+               "resources": 10002,
+               "employees": [],
+               "expensesOtherThanSalaries": 9432
           },
           {
-               "revenue": 284774,
+               "revenue": 1002,
                "name": "F3",
-               "resources": 388423,
+               "resources": 3000,
                "employees": [],
-               "expensesOtherThanSalaries": 83828
+               "expensesOtherThanSalaries": 3990
+          },
+          {
+               "revenue": 1000,
+               "name": "F4",
+               "resources": 2000,
+               "employees": [],
+               "expensesOtherThanSalaries": 3000
           }
      ]
 }

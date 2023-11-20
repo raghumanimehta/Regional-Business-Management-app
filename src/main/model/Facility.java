@@ -34,7 +34,6 @@ public class Facility {
         this.resources = resources;
         this.expensesOtherThanSalaries = expensesOtherThanSalaries;
         this.employeeTypes = new ArrayList<>();
-
     }
 
     // Requires: count > 0
@@ -74,10 +73,8 @@ public class Facility {
             if (employeeType.getTitle().equals(title)) {
                 return employeeType.getTotalMoneyToBePaid();
             }
-
         }
         return -1;
-
     }
 
 
@@ -146,6 +143,7 @@ public class Facility {
         return employeeTypes;
     }
 
+
     public int getResources() {
         return resources;
     }
@@ -166,6 +164,18 @@ public class Facility {
 
     public int getExpensesOtherThanSalaries() {
         return expensesOtherThanSalaries;
+    }
+
+    public int getSalaries() {
+        int salary = 0;
+        for (EmployeeType e: this.employeeTypes) {
+            salary += e.getSalary();
+        }
+        return salary;
+    }
+
+    public boolean isProfitable() {
+        return (revenue > (expensesOtherThanSalaries + getSalaries()));
     }
 }
 
