@@ -7,10 +7,17 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class FacilityTest {
     private Facility testFacility1;
+    private Facility testFacility2;
+    private Facility testFacility3;
+
     @BeforeEach
     void setUp(){
         testFacility1 = new Facility("Facility1", 1000, 40000
                 , 2500);
+        testFacility2 = new Facility("Facility2", 1000, 40000
+                , 1);
+        testFacility3 = new Facility("Facility3", 1000, 40000
+                , 1000);
     }
 
 
@@ -100,6 +107,26 @@ public class FacilityTest {
     void increaseResourcesTest(){
         testFacility1.increaseResources(100);
         assertEquals(40100, testFacility1.getResources());
+    }
+
+    @Test
+    void getSalariesNoEmployeeTest() {
+        assertEquals(0, testFacility1.getSalaries());
+    }
+
+    @Test
+    void getSalariesTestMain() {
+        testFacility1.addEmployeeType("Manager", 1000, 3);
+        testFacility1.addEmployeeType("CEO", 5000, 1);
+        testFacility1.addEmployeeType("Assistant Manager", 2000, 1);
+        assertEquals(10000, testFacility1.getSalaries());
+    }
+
+    @Test
+    void isProfitableTest() {
+        assertFalse(testFacility1.isProfitable());
+        assertTrue(testFacility2.isProfitable());
+        assertFalse(testFacility3.isProfitable());
     }
 
 }

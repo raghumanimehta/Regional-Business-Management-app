@@ -169,7 +169,7 @@ public class Facility {
     public int getSalaries() {
         int salary = 0;
         for (EmployeeType e: this.employeeTypes) {
-            salary += e.getSalary();
+            salary += e.getSalary() * e.getCount();
         }
         return salary;
     }
