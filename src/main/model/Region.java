@@ -60,7 +60,7 @@ public class Region {
     }
 
     // Requires: amount > 0 (in cents).
-    //Modifies: this, Facility
+    // Modifies: this, Facility
     // Effects: If the start facility has resources (in cents) greater than or equal to the given
     // amount(in cents), deducts that amount (in cents) from the start facility and adds it to the destination facility
     // and returns true. If the start facility ends up with < 0 resources, returns false. If one or both facilities not

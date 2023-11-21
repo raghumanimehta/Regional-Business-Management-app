@@ -1,0 +1,180 @@
+<html>
+<head>
+<title>Region.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #808080;}
+.s3 { color: #6897bb;}
+.s4 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Region.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">model</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">org.json.JSONArray</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">org.json.JSONObject</span><span class="s0">;</span>
+
+
+<span class="s0">import </span><span class="s1">java.util.ArrayList</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.List</span><span class="s0">;</span>
+
+
+<span class="s2">/* 
+ * Represents a region. A region has a name, a list of facilities in the region and expenses allotted by the business 
+ * for the region. There cannot be duplicates in the list of facilities, that is, each facility can only be present in 
+ * the list once. The facilities are stored in the order of which they were added. Expenses, Revenues, and Resources 
+ * are all stored as cents. 
+ */</span>
+<span class="s0">public class </span><span class="s1">Region {</span>
+
+    <span class="s0">private </span><span class="s1">String name</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">List&lt;Facility&gt; facilities</span><span class="s0">;</span>
+
+    <span class="s2">// Effects: Constructs a new region with the given name, an empty list of Facilities</span>
+    <span class="s0">public </span><span class="s1">Region(String name) {</span>
+        <span class="s0">this</span><span class="s1">.name = name</span><span class="s0">;</span>
+        <span class="s0">this</span><span class="s1">.facilities = </span><span class="s0">new </span><span class="s1">ArrayList&lt;&gt;()</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s2">// Modifies : this</span>
+    <span class="s2">// Effects: Adds a facility with the given parameters to the region and returns true.</span>
+    <span class="s2">// If Facility with the same name already in the region does nothing and return false.</span>
+    <span class="s0">public boolean </span><span class="s1">addFacility(String name</span><span class="s0">, int </span><span class="s1">revenue</span><span class="s0">, int </span><span class="s1">resources</span><span class="s0">, int </span><span class="s1">expensesOtherThanSalaries) {</span>
+        <span class="s0">for </span><span class="s1">(Facility f : </span><span class="s0">this</span><span class="s1">.facilities) {</span>
+            <span class="s0">if </span><span class="s1">(f.getName().equals(name)) {</span>
+                <span class="s0">return false;</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+        <span class="s1">Facility facility = </span><span class="s0">new </span><span class="s1">Facility(name</span><span class="s0">, </span><span class="s1">revenue</span><span class="s0">, </span><span class="s1">resources</span><span class="s0">, </span><span class="s1">expensesOtherThanSalaries)</span><span class="s0">;</span>
+        <span class="s0">this</span><span class="s1">.facilities.add(facility)</span><span class="s0">;</span>
+        <span class="s0">return true;</span>
+    <span class="s1">}</span>
+
+
+    <span class="s2">// Modifies : this</span>
+    <span class="s2">// Effects: Removes the facility from the region and returns true.</span>
+    <span class="s2">// If Facility not in the region does nothing and return false.</span>
+    <span class="s0">public boolean </span><span class="s1">removeFacility(String title) {</span>
+
+        <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s3">0</span><span class="s0">; </span><span class="s1">i &lt; </span><span class="s0">this</span><span class="s1">.facilities.size()</span><span class="s0">; </span><span class="s1">i++) {</span>
+            <span class="s0">if </span><span class="s1">(</span><span class="s0">this</span><span class="s1">.facilities.get(i).getName().equals(title)) {</span>
+                <span class="s0">this</span><span class="s1">.facilities.remove(i)</span><span class="s0">;</span>
+                <span class="s0">return true;</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+        <span class="s0">return false;</span>
+    <span class="s1">}</span>
+
+    <span class="s2">// Effects : returns the number of facilities in the region.</span>
+    <span class="s0">public int </span><span class="s1">countFacilities() {</span>
+        <span class="s0">return this</span><span class="s1">.facilities.size()</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s2">// Requires: amount &gt; 0 (in cents).</span>
+    <span class="s2">// Modifies: this, Facility</span>
+    <span class="s2">// Effects: If the start facility has resources (in cents) greater than or equal to the given</span>
+    <span class="s2">// amount(in cents), deducts that amount (in cents) from the start facility and adds it to the destination facility</span>
+    <span class="s2">// and returns true. If the start facility ends up with &lt; 0 resources, returns false. If one or both facilities not</span>
+    <span class="s2">// found then returns false and does nothing.</span>
+    <span class="s0">public boolean </span><span class="s1">transferResources(String start</span><span class="s0">, </span><span class="s1">String destination</span><span class="s0">, int </span><span class="s1">amount) {</span>
+        <span class="s1">Facility startFacility = findFacility(start)</span><span class="s0">;</span>
+        <span class="s1">Facility destinationFacility = findFacility(destination)</span><span class="s0">;</span>
+
+        <span class="s0">if </span><span class="s1">(startFacility == </span><span class="s0">null </span><span class="s1">|| destinationFacility == </span><span class="s0">null</span><span class="s1">) {</span>
+            <span class="s0">return false;</span>
+        <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+            <span class="s0">if </span><span class="s1">(startFacility.getResources() - amount &gt;= </span><span class="s3">0</span><span class="s1">) {</span>
+                <span class="s1">startFacility.decreaseResources(amount)</span><span class="s0">;</span>
+                <span class="s1">destinationFacility.increaseResources(amount)</span><span class="s0">;</span>
+                <span class="s0">return true;</span>
+            <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+                <span class="s0">return false;</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+
+    <span class="s2">// Effects: checks if the facility is in the list</span>
+    <span class="s0">public </span><span class="s1">Facility findFacility(String name) {</span>
+        <span class="s0">for </span><span class="s1">(Facility f : </span><span class="s0">this</span><span class="s1">.facilities) {</span>
+            <span class="s0">if </span><span class="s1">(f.getName().equals(name)) {</span>
+                <span class="s0">return </span><span class="s1">f</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+
+
+    <span class="s2">// Effects: Returns the total expense (in cents) incurred in the region.</span>
+    <span class="s0">public int </span><span class="s1">calculateTotalExpenses() {</span>
+        <span class="s0">int </span><span class="s1">totalExpenses = </span><span class="s3">0</span><span class="s0">;</span>
+        <span class="s0">for </span><span class="s1">(Facility facility : </span><span class="s0">this</span><span class="s1">.facilities) {</span>
+            <span class="s1">totalExpenses += facility.getExpensesOtherThanSalaries()</span>
+                    <span class="s1">+ facility.calculateTotalMoneyToBePaidToEmployees()</span><span class="s0">;</span>
+        <span class="s1">}</span>
+        <span class="s0">return </span><span class="s1">totalExpenses</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s2">// Effects: Returns the total resources (in cents) allotted in the region</span>
+    <span class="s0">public int </span><span class="s1">calculateTotalResourcesRegion() {</span>
+        <span class="s0">int </span><span class="s1">totalResources = </span><span class="s3">0</span><span class="s0">;</span>
+        <span class="s0">for </span><span class="s1">(Facility facility : </span><span class="s0">this</span><span class="s1">.facilities) {</span>
+            <span class="s1">totalResources += facility.getResources()</span><span class="s0">;</span>
+        <span class="s1">}</span>
+        <span class="s0">return </span><span class="s1">totalResources</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s2">// Effects: Returns the total revenue (in cents) earned in the region</span>
+    <span class="s0">public int </span><span class="s1">calculateTotalRevenueRegion() {</span>
+        <span class="s0">int </span><span class="s1">totalRevenue = </span><span class="s3">0</span><span class="s0">;</span>
+        <span class="s0">for </span><span class="s1">(Facility facility : </span><span class="s0">this</span><span class="s1">.facilities) {</span>
+            <span class="s1">totalRevenue += facility.getRevenue()</span><span class="s0">;</span>
+        <span class="s1">}</span>
+        <span class="s0">return </span><span class="s1">totalRevenue</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s2">// Effects : Returns true if the region is profitable (revenue &gt; total expenses)</span>
+    <span class="s0">public boolean </span><span class="s1">isProfitable() {</span>
+        <span class="s0">return </span><span class="s1">(calculateTotalRevenueRegion() &gt; calculateTotalExpenses())</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+
+    <span class="s2">// Effects: returns this as a JSON object. Inspired from the code given in JsonSerializationDemo</span>
+    <span class="s0">public </span><span class="s1">JSONObject toJson() {</span>
+        <span class="s1">JSONObject myObject = </span><span class="s0">new </span><span class="s1">JSONObject()</span><span class="s0">;</span>
+        <span class="s1">myObject.put(</span><span class="s4">&quot;name&quot;</span><span class="s0">, this</span><span class="s1">.name)</span><span class="s0">;</span>
+        <span class="s1">myObject.put(</span><span class="s4">&quot;facilities&quot;</span><span class="s0">, </span><span class="s1">facilitiesToJson())</span><span class="s0">;</span>
+        <span class="s0">return </span><span class="s1">myObject</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s2">//Effects: returns facilities in the region as a JSON array. Inspired from the code given in JsonSerializationDemo</span>
+    <span class="s0">public </span><span class="s1">JSONArray facilitiesToJson() {</span>
+        <span class="s1">JSONArray myArray = </span><span class="s0">new </span><span class="s1">JSONArray()</span><span class="s0">;</span>
+
+        <span class="s0">for </span><span class="s1">(Facility nextFacility : </span><span class="s0">this</span><span class="s1">.facilities) {</span>
+            <span class="s1">myArray.put(nextFacility.toJson())</span><span class="s0">;</span>
+        <span class="s1">}</span>
+        <span class="s0">return </span><span class="s1">myArray</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public </span><span class="s1">String getName() {</span>
+        <span class="s0">return </span><span class="s1">name</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s2">// Effects: Returns the list of facilities in the region.</span>
+    <span class="s0">public </span><span class="s1">List&lt;Facility&gt; getFacilities() {</span>
+        <span class="s0">return </span><span class="s1">facilities</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+
+<span class="s1">}</span>
+</pre>
+</body>
+</html>
