@@ -146,6 +146,7 @@ public class Region {
         return myArray;
     }
 
+    // Effects: gets the name of the region
     public String getName() {
         return name;
     }

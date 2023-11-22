@@ -9,7 +9,7 @@ import model.*;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
-// Management App
+// Management App console based UI
 public class ManagementApp {
     private Scanner scanner;
     private Region region;

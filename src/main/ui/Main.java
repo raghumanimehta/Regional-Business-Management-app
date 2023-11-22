@@ -10,13 +10,11 @@ public class Main {
         } catch (FileNotFoundException e) {
             System.out.println("Error encountered! File not found!");
         }
-
-
 //        try {
 //            new ManagementApp("Vancouver");
 //        } catch (FileNotFoundException e) {
 //            System.out.println("Error encountered! File not found!");
-//        }
+//
     }
 
 }

@@ -34,14 +34,17 @@ public class EmployeeType {
         return myObject;
     }
 
+    // Effects: returns the title of the employee type
     public String getTitle() {
         return title;
     }
 
+    // Effects: returns the salary of each employee in employee type
     public int getSalary() {
         return salary;
     }
 
+    // Effects: returns the count of the employees in the employee Type
     public int getCount() {
         return count;
     }

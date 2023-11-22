@@ -15,7 +15,9 @@ import javax.swing.border.EmptyBorder;
 import static java.awt.Color.black;
 
 /*
+
 Management App GUI class
+
  */
 public class ManagementAppUI extends JFrame {
     public static final int WIDTH = 600;
@@ -48,7 +50,7 @@ public class ManagementAppUI extends JFrame {
         runUI();
     }
 
-
+    // Modifies: this
     // Effects: adds actionListener to the facilities in the listPanel on the left
     private void addListActionListener() {
         facilitiesList.addListSelectionListener(e -> {
@@ -62,6 +64,7 @@ public class ManagementAppUI extends JFrame {
     }
 
 
+    // Modifies: this
     //Effects: displays the details of the facilities in the right panel
     private void displayDetails(Facility selectedFacility) {
         rightPanel.removeAll();
@@ -111,6 +114,7 @@ public class ManagementAppUI extends JFrame {
         frame.setVisible(true);
     }
 
+    // Modifies: this
     // Effects: instantiates and sets up the start up image.
     // credit for the image: in the README.md file
     private void startScreen() {
@@ -167,6 +171,7 @@ public class ManagementAppUI extends JFrame {
     }
 
 
+    // Modifies: this
     // Effects: creates the panel that contains the save, load, and exit buttons
     private JPanel saveLoadExitPanel() {
         JPanel saveLoadExitPanel = new JPanel();
@@ -182,6 +187,7 @@ public class ManagementAppUI extends JFrame {
         return saveLoadExitPanel;
     }
 
+    // Modifies: this
     // Effects: makes the exit button
     private JButton exitRegion() {
         JButton exitButton = new JButton("Exit");
@@ -191,6 +197,7 @@ public class ManagementAppUI extends JFrame {
         return exitButton;
     }
 
+    // Modifies: this
     // Effects : makes the load button
     private JButton loadRegion() {
         JButton loadButton = new JButton("Load");
@@ -200,6 +207,7 @@ public class ManagementAppUI extends JFrame {
         return loadButton;
     }
 
+    // Modifies: this
     // Effects : makes the save button
     private JButton saveRegion() {
         JButton saveButton = new JButton("Save");
@@ -371,6 +379,8 @@ public class ManagementAppUI extends JFrame {
         }
     }
 
+    // Modifies: this
+    // Effects: updates the UI
     private void update() {
         updateTextArea();
         displayDetails(selectedFacility);

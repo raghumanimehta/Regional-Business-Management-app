@@ -13,7 +13,7 @@ public class EmployeeTypeTest {
         testEmployeeType = new EmployeeType("test", 2000, 1000);
     }
     @Test
-    void getTtoalMoneytoBePaidTest(){
+    void getTotalMoneyToBePaidTest(){
         assertEquals(2000*1000, testEmployeeType.getTotalMoneyToBePaid());
     }
 }

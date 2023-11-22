@@ -138,12 +138,12 @@ public class Facility {
         return myArray;
     }
 
-
+    // Effects: gets the list of employee types in the facility
     public List<EmployeeType> getEmployeeTypes() {
         return employeeTypes;
     }
 
-
+    //Effects: gets the resources invested in the facility
     public int getResources() {
         return resources;
     }
@@ -153,19 +153,22 @@ public class Facility {
         return this.employeeTypes.size();
     }
 
+    // Effects: returns the name of the facility
     public String getName() {
         return name;
     }
 
+    // Effects: returns the revenues of the facility
     public int getRevenue() {
         return revenue;
     }
 
-
+    // Effects: returns the expenses other than salaries
     public int getExpensesOtherThanSalaries() {
         return expensesOtherThanSalaries;
     }
 
+    // Effects: returns the total salary to be paid to all the employees, returns 0 if there are no employee types
     public int getSalaries() {
         int salary = 0;
         for (EmployeeType e: this.employeeTypes) {
@@ -174,6 +177,7 @@ public class Facility {
         return salary;
     }
 
+    // Effects: returns true if the facility is profitable
     public boolean isProfitable() {
         return (revenue > (expensesOtherThanSalaries + getSalaries()));
     }
