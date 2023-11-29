@@ -2,47 +2,40 @@
      "name": "Vancouver",
      "facilities": [
           {
-               "revenue": 10000,
+               "revenue": 2000,
                "name": "F1",
-               "resources": 2000,
-               "employees": [
-                    {
-                         "count": 1,
-                         "title": "Singham",
-                         "salary": 1000
-                    },
-                    {
-                         "count": 2,
-                         "title": "Pathaan",
-                         "salary": 1200
-                    }
-               ],
-               "expensesOtherThanSalaries": 3000
-          },
-          {
-               "revenue": 99000,
-               "name": "F2",
                "resources": 3000,
-               "employees": [],
-               "expensesOtherThanSalaries": 2000
-          },
-          {
-               "revenue": 98380,
-               "name": "F4\\",
-               "resources": 1000,
                "employees": [{
-                    "count": 1,
+                    "count": 2,
                     "title": "Manager",
-                    "salary": 3990
+                    "salary": 300
                }],
                "expensesOtherThanSalaries": 2000
           },
           {
-               "revenue": 100,
+               "revenue": 3000,
+               "name": "F2",
+               "resources": 2900,
+               "employees": [
+                    {
+                         "count": 2,
+                         "title": "Clerk",
+                         "salary": 3000
+                    },
+                    {
+                         "count": 30,
+                         "title": "JJ",
+                         "salary": 39990
+                    }
+               ],
+               "expensesOtherThanSalaries": 2000
+          },
+          {
+               "revenue": 10020,
                "name": "F3",
-               "resources": 200,
+               "resources": 2100,
                "employees": [],
-               "expensesOtherThanSalaries": 3000
+               "expensesOtherThanSalaries": 25040
           }
      ]
 }

@@ -44,7 +44,7 @@ done by clicking the "Show Profitable Facilities" button. You can click it again
 - Looking at the final project and the UML class diagram, there are a few shortcomings with the projects that I'll like 
 to address in the refactoring. The first would be using more classes to make the GUI, my GUI is all in one class, and I 
 believe it does too much. It would be better if I could split it into different classes and split the work using the 
-power of object-oriented design. I would make the 'Facility' an interface and implement different types facilities. 
+power of object-oriented design. I would make the 'Facility' an interface and implement different types of facilities. 
 - Another thing I'd like to improve on is making the system more robust. I haven't made use of exceptions anywhere in my 
-model classes, and have relied on REQUIRES clauses and the end-user to behave and input that permissible values. I'd 
+model classes, and have relied on REQUIRES clauses and the end-user to behave and input the permissible values. I'd 
 like to take that burden away from the user and add exceptions.
