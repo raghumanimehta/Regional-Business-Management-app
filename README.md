@@ -39,3 +39,12 @@ done by clicking the "Show Profitable Facilities" button. You can click it again
 - You can transfer resources from one facility to another by pressing the "Transfer Resources" button in the left panel.
 - You can save the state of my application by clicking the "Save" button in the right panel.
 - You can reload the last state of my application by clicking the "Load" button in the right panel.
+
+# Phase 4: Task 3
+- Looking at the final project and the UML class diagram, there are a few shortcomings with the projects that I'll like 
+to address in the refactoring. The first would be using more classes to make the GUI, my GUI is all in one class, and I 
+believe it does too much. It would be better if I could split it into different classes and split the work using the 
+power of object-oriented design. I would make the 'Facility' an interface and implement different types facilities. 
+- Another thing I'd like to improve on is making the system more robust. I haven't made use of exceptions anywhere in my 
+model classes, and have relied on REQUIRES clauses and the end-user to behave and input that permissible values. I'd 
+like to take that burden away from the user and add exceptions.

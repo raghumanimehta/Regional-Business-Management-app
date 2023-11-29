@@ -2,22 +2,47 @@
      "name": "Vancouver",
      "facilities": [
           {
-               "revenue": 1000,
+               "revenue": 10000,
                "name": "F1",
-               "resources": 1000,
-               "employees": [{
-                    "count": 1,
-                    "title": "Maa",
-                    "salary": 1000
-               }],
-               "expensesOtherThanSalaries": 3
+               "resources": 2000,
+               "employees": [
+                    {
+                         "count": 1,
+                         "title": "Singham",
+                         "salary": 1000
+                    },
+                    {
+                         "count": 2,
+                         "title": "Pathaan",
+                         "salary": 1200
+                    }
+               ],
+               "expensesOtherThanSalaries": 3000
           },
           {
-               "revenue": 1000,
+               "revenue": 99000,
                "name": "F2",
                "resources": 3000,
                "employees": [],
-               "expensesOtherThanSalaries": 4000
+               "expensesOtherThanSalaries": 2000
+          },
+          {
+               "revenue": 98380,
+               "name": "F4\\",
+               "resources": 1000,
+               "employees": [{
+                    "count": 1,
+                    "title": "Manager",
+                    "salary": 3990
+               }],
+               "expensesOtherThanSalaries": 2000
+          },
+          {
+               "revenue": 100,
+               "name": "F3",
+               "resources": 200,
+               "employees": [],
+               "expensesOtherThanSalaries": 3000
           }
      ]
 }
