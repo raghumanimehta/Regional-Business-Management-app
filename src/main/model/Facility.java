@@ -34,6 +34,8 @@ public class Facility {
         this.resources = resources;
         this.expensesOtherThanSalaries = expensesOtherThanSalaries;
         this.employeeTypes = new ArrayList<>();
+        EventLog.getInstance().logEvent(new Event("Constructed a facility with name: "
+                + name));
     }
 
     // Requires: count > 0
@@ -43,11 +45,15 @@ public class Facility {
     public boolean addEmployeeType(String title, int salary, int count) {
         for (EmployeeType e : this.employeeTypes) {
             if (e.getTitle().equals(title)) {
+                EventLog.getInstance().logEvent(new Event("Attempted to add employeeType with title "
+                        + title + " to the facility " + name));
                 return false;
             }
         }
         EmployeeType employeeType = new EmployeeType(title, salary, count);
         this.employeeTypes.add(employeeType);
+        EventLog.getInstance().logEvent(new Event("Added employeeType with title "
+                + title + " to the facility " + name));
         return true;
     }
 
@@ -59,9 +65,13 @@ public class Facility {
         for (int i = 0; i < this.employeeTypes.size(); i++) {
             if (this.employeeTypes.get(i).getTitle().equals(title)) {
                 this.employeeTypes.remove(i);
+                EventLog.getInstance().logEvent(new Event("Removed employeeType with title "
+                        + title + " from the facility " + name));
                 return true;
             }
         }
+        EventLog.getInstance().logEvent(new Event("Attempted to remove employeeType with title "
+                + title + " from the facility " + name));
         return false;
     }
 
@@ -71,9 +81,13 @@ public class Facility {
     public int calculateSalaryToEmployeeType(String title) {
         for (EmployeeType employeeType : this.employeeTypes) {
             if (employeeType.getTitle().equals(title)) {
+                EventLog.getInstance().logEvent(new Event("Calculated total salary to the employeeType"
+                        + " with title " + title + " , total salary = " + employeeType.getTotalMoneyToBePaid()));
                 return employeeType.getTotalMoneyToBePaid();
             }
         }
+        EventLog.getInstance().logEvent(new Event("Attempted to calculate total salary to the employeeType"
+                + " with title " + title));
         return -1;
     }
 
@@ -174,11 +188,14 @@ public class Facility {
         for (EmployeeType e: this.employeeTypes) {
             salary += e.getSalary() * e.getCount();
         }
+        EventLog.getInstance().logEvent(new Event("Calculated total salary to be"
+                + " paid to all the employeeTypes in " + name + ", total salary to be paid: " + salary));
         return salary;
     }
 
     // Effects: returns true if the facility is profitable
     public boolean isProfitable() {
+        EventLog.getInstance().logEvent(new Event("Checked if the facility " + name + " is profitable"));
         return (revenue > (expensesOtherThanSalaries + getSalaries()));
     }
 }

@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 import model.*;
+import model.Event;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -259,7 +260,14 @@ public class ManagementAppUI extends JFrame {
 
     // Effects: exits the application and stop processes
     private void exit() {
+        printLog();
         System.exit(0);
+    }
+
+    private void printLog() {
+        for (Event e : EventLog.getInstance()) {
+            System.out.println(e.getDescription());
+        }
     }
 
     // Modifies: this
@@ -383,7 +391,9 @@ public class ManagementAppUI extends JFrame {
     // Effects: updates the UI
     private void update() {
         updateTextArea();
-        displayDetails(selectedFacility);
+        if (selectedFacility != null) {
+            displayDetails(selectedFacility);
+        }
         rightPanel.repaint();
         rightPanel.revalidate();
     }

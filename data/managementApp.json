@@ -2,61 +2,22 @@
      "name": "Vancouver",
      "facilities": [
           {
-               "revenue": 19929929,
-               "name": "Raghumani",
-               "resources": 1082199,
-               "employees": [],
-               "expensesOtherThanSalaries": 18191
-          },
-          {
-               "revenue": 91910101,
-               "name": "Anmol",
-               "resources": 100101,
-               "employees": [],
-               "expensesOtherThanSalaries": 91919
-          },
-          {
-               "revenue": 191919,
-               "name": "Lodho",
-               "resources": 8188181,
+               "revenue": 1000,
+               "name": "F1",
+               "resources": 1000,
                "employees": [{
-                    "count": 0,
-                    "title": "Cleaner",
-                    "salary": 10
+                    "count": 1,
+                    "title": "Maa",
+                    "salary": 1000
                }],
-               "expensesOtherThanSalaries": 8181
+               "expensesOtherThanSalaries": 3
           },
           {
-               "revenue": 21092399,
-               "name": "Saanvi",
-               "resources": 920919901,
-               "employees": [
-                    {
-                         "count": 9210291,
-                         "title": "CEO",
-                         "salary": 102090101
-                    },
-                    {
-                         "count": 8182,
-                         "title": "Manager",
-                         "salary": 999120192
-                    }
-               ],
-               "expensesOtherThanSalaries": 838932898
-          },
-          {
-               "revenue": 398389283,
-               "name": "Piyanka",
-               "resources": 81982182,
+               "revenue": 1000,
+               "name": "F2",
+               "resources": 3000,
                "employees": [],
-               "expensesOtherThanSalaries": 71928212
-          },
-          {
-               "revenue": 288218,
-               "name": "blah",
-               "resources": 38129819,
-               "employees": [],
-               "expensesOtherThanSalaries": 19889182
+               "expensesOtherThanSalaries": 4000
           }
      ]
 }

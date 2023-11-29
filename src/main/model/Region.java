@@ -23,6 +23,7 @@ public class Region {
     public Region(String name) {
         this.name = name;
         this.facilities = new ArrayList<>();
+        EventLog.getInstance().logEvent(new Event("Constructed a region with name: " + name));
     }
 
     // Modifies : this
@@ -31,11 +32,15 @@ public class Region {
     public boolean addFacility(String name, int revenue, int resources, int expensesOtherThanSalaries) {
         for (Facility f : this.facilities) {
             if (f.getName().equals(name)) {
+                EventLog.getInstance().logEvent(new Event("Attempted to add facility with name "
+                        + name + " to the region"));
                 return false;
             }
         }
         Facility facility = new Facility(name, revenue, resources, expensesOtherThanSalaries);
         this.facilities.add(facility);
+        EventLog.getInstance().logEvent(new Event("Added facility with name "
+                + name + " to the region"));
         return true;
     }
 
@@ -48,9 +53,13 @@ public class Region {
         for (int i = 0; i < this.facilities.size(); i++) {
             if (this.facilities.get(i).getName().equals(title)) {
                 this.facilities.remove(i);
+                EventLog.getInstance().logEvent(new Event("Removed facility with name "
+                        + title + " from the region"));
                 return true;
             }
         }
+        EventLog.getInstance().logEvent(new Event("Attempted to remove facility with name "
+                + title + " from the region"));
         return false;
     }
 
@@ -70,16 +79,23 @@ public class Region {
         Facility destinationFacility = findFacility(destination);
 
         if (startFacility == null || destinationFacility == null) {
+            EventLog.getInstance().logEvent(new Event("Attempted to transfer resources transferred from "
+                    + start + " to " + destination));
             return false;
         } else {
             if (startFacility.getResources() - amount >= 0) {
                 startFacility.decreaseResources(amount);
                 destinationFacility.increaseResources(amount);
+                EventLog.getInstance().logEvent(new Event("Resources transferred from "
+                        + start + " to " + destination + " of amount " + amount));
                 return true;
             } else {
+                EventLog.getInstance().logEvent(new Event("Attempted to transfer resources transferred from "
+                        + start + " to " + destination));
                 return false;
             }
         }
+
     }
 
 
@@ -101,6 +117,7 @@ public class Region {
             totalExpenses += facility.getExpensesOtherThanSalaries()
                     + facility.calculateTotalMoneyToBePaidToEmployees();
         }
+        EventLog.getInstance().logEvent(new Event("Region's total expenses calculated: " + totalExpenses));
         return totalExpenses;
     }
 
@@ -110,6 +127,7 @@ public class Region {
         for (Facility facility : this.facilities) {
             totalResources += facility.getResources();
         }
+        EventLog.getInstance().logEvent(new Event("Region's total resources calculated: " + totalResources));
         return totalResources;
     }
 
@@ -119,12 +137,15 @@ public class Region {
         for (Facility facility : this.facilities) {
             totalRevenue += facility.getRevenue();
         }
+        EventLog.getInstance().logEvent(new Event("Region's total revenue calculated: " + totalRevenue));
         return totalRevenue;
     }
 
     // Effects : Returns true if the region is profitable (revenue > total expenses)
     public boolean isProfitable() {
-        return (calculateTotalRevenueRegion() > calculateTotalExpenses());
+        boolean bool = (calculateTotalRevenueRegion() > calculateTotalExpenses());
+        EventLog.getInstance().logEvent(new Event("Checked if region is profitable " + bool));
+        return bool;
     }
 
 
@@ -133,6 +154,7 @@ public class Region {
         JSONObject myObject = new JSONObject();
         myObject.put("name", this.name);
         myObject.put("facilities", facilitiesToJson());
+        EventLog.getInstance().logEvent(new Event("Saving region to JSON"));
         return myObject;
     }
 
@@ -155,6 +177,4 @@ public class Region {
     public List<Facility> getFacilities() {
         return facilities;
     }
-
-
 }
