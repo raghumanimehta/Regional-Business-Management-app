@@ -7,6 +7,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 /**
  * Unit tests for the Event class
@@ -34,5 +35,15 @@ public class EventTest {
     @Test
     public void testToString() {
         assertEquals(d.toString() + "\n" + "Region's revenue was calculated", e.toString());
+    }
+
+    @Test
+    public void equalsNullTest() {
+        assertFalse(e.equals(null));
+    }
+
+    @Test
+    public void equalsFalse() {
+        assertFalse(e.equals(new Object()));
     }
 }
