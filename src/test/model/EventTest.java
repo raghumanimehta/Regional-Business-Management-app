@@ -46,4 +46,9 @@ public class EventTest {
     public void equalsFalse() {
         assertFalse(e.equals(new Object()));
     }
+
+    @Test
+    public void hashCodeTest() {
+        assertEquals(e.hashCode(), e.hashCode());
+    }
 }
