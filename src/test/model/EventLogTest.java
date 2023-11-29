@@ -41,7 +41,8 @@ public class EventLogTest {
 
         assertTrue(l.contains(e1));
         assertTrue(l.contains(e2));
-        assertTrue(l.contains(e3))
+        assertTrue(l.contains(e3));
+    }
 
     @Test
     public void testClear() {
