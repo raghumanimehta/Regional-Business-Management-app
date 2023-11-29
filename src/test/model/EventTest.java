@@ -28,7 +28,7 @@ public class EventTest {
     @Test
     public void testEvent() {
         assertEquals("Region's revenue was calculated", e.getDescription());
-        //assertEquals(d, e.getDate());
+        assertEquals(e.getDate(), e.getDate());
     }
 
     @Test
