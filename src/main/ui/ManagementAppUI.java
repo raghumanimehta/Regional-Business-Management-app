@@ -611,7 +611,7 @@ public class ManagementAppUI extends JFrame {
     private void makeTransfer(String from, String to, int amount) {
         if (region.transferResources(from, to, amount)) {
             JOptionPane.showMessageDialog(frame,"Transfer of " + amount + " from " + from + " to "
-                    + to +  " successful");
+                    + to + " successful");
         } else {
             JOptionPane.showMessageDialog(frame, "Transfer not possible!");
         }
